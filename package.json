@@ -1,0 +1,31 @@
+{
+  "name": "jenkins-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node dist/server.js",
+    "lint": "eslint src tests",
+    "test": "jest",
+    "test:ci": "JEST_JUNIT_OUTPUT_DIR=reports/junit JEST_JUNIT_OUTPUT_NAME=junit.xml jest --ci --coverage --reporters=default --reporters=jest-junit",
+    "build": "powershell -NoProfile -Command \"if (Test-Path dist) { Remove-Item dist -Recurse -Force }; esbuild src/server.js --bundle --platform=node --packages=external --outfile=dist/server.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
+    "jest": "^30.5.2",
+    "jest-junit": "^17.0.0",
+    "rimraf": "^6.1.4",
+    "supertest": "^7.3.2"
+  }
+}
